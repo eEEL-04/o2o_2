@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jhc.o2o.dao.ShopCategoryDao">
+
+    <select id="queryShopCategory" resultType="shopCategory">
+        select
+        *
+        from
+        tb_shop_category
+        <where>
+            <if test="ShopCategoryCondition==null">
+                and parent_id is null
+            </if>
+            <if test="ShopCategoryCondition!=null">
+                and parent_id is not null
+            </if>
+            <if test="ShopCategoryCondition!=null and ShopCategoryCondition.parent!=null">
+                and parent_id = #{ShopCategoryCondition.parent.shopCategoryId}
+            </if>
+        </where>
+        order by
+        priority DESC
+    </select>
+
+</mapper>
