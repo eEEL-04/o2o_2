@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class Hello {
-    @RequestMapping(name = "hello",method = RequestMethod.GET)
+    @RequestMapping(value = "",method = RequestMethod.GET)
     public String hello(){
         return "Hello SpringBoot!";
     }
